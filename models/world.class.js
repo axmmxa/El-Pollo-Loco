@@ -30,17 +30,10 @@ class World {
 
        this.addToMap(this.character)
 
-        this.enemies.forEach(enemy =>{
-            this.addToMap(enemy)
-        })
+       this.addObjectsToMap(this.enemies)
+       this.addObjectsToMap(this.clouds)
+       this.addObjectsToMap(this.backgroundObjects)
 
-        this.clouds.forEach(cloud => {
-            this.addToMap(cloud)
-        })
-
-        this.backgroundObjects.forEach(bgo => {
-            this.addToMap(bgo)
-        })
 
        
 
@@ -50,6 +43,12 @@ class World {
         let self = this
         requestAnimationFrame(function(){
             self.draw();
+        })
+    }
+
+    addObjectsToMap(objects) {
+        objects.forEach(object => {
+            this.addToMap(object)
         })
     }
 
