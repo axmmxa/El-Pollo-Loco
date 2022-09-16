@@ -3,7 +3,7 @@ class Character extends MovableObject {
     height = 300
     y = 145
 
-
+    speed = 5
     IMAGES_Walking = [
             'img/2_character_pepe/2_walk/W-21.png',
             'img/2_character_pepe/2_walk/W-22.png',
@@ -12,6 +12,8 @@ class Character extends MovableObject {
             'img/2_character_pepe/2_walk/W-25.png',
             'img/2_character_pepe/2_walk/W-26.png'
     ]
+
+    world
 
     
 
@@ -28,12 +30,32 @@ class Character extends MovableObject {
     }
 
     animate() {
+
+        setInterval(() => {
+            if(this.world.keyboard.RIGHT) {
+            this.x += this.speed }
+
+            if(this.world.keyboard.LEFT) {
+                this.x -= this.speed }
+
+
+        }, 1000/60)
+
         setInterval( () => {
+
+            if(this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+            
+              
+
+            // walk Animation    
             let i = this.currentImage % this.IMAGES_Walking.length
             let path =this.IMAGES_Walking[i]
             this.img = this.imageCache[path]
             this.currentImage++
-        }, 100)
+            }
+        }, 50)
+
+    
         
     }
 
