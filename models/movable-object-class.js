@@ -58,8 +58,7 @@ class MovableObject {
         }
         
     jump() {
-            this.speedY = 30
-            console.log("jump")
+        this.speedY = 30
         }
     
     }
