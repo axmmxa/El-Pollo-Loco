@@ -56,4 +56,9 @@ class MovableObject {
             }, 1000 / 60)
         }
         
+        
+    
     }
+
+    
+    
