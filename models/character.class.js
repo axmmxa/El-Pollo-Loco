@@ -4,7 +4,7 @@ class Character extends MovableObject {
     y = 145
 
     speed = 5
-    IMAGES_Walking = [
+    IMAGES_WALKING = [
             'img/2_character_pepe/2_walk/W-21.png',
             'img/2_character_pepe/2_walk/W-22.png',
             'img/2_character_pepe/2_walk/W-23.png',
@@ -22,7 +22,7 @@ class Character extends MovableObject {
         
         super().loadImage('img/2_character_pepe/2_walk/W-21.png',)
 
-        this.loadImages(this.IMAGES_Walking)
+        this.loadImages(this.IMAGES_WALKING)
 
         this.animate()
 
@@ -51,10 +51,7 @@ class Character extends MovableObject {
               
 
             // walk Animation    
-            let i = this.currentImage % this.IMAGES_Walking.length
-            let path =this.IMAGES_Walking[i]
-            this.img = this.imageCache[path]
-            this.currentImage++
+            this.playAnimation(this.IMAGES_WALKING)
             }
         }, 50)
   
