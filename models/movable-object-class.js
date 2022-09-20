@@ -10,6 +10,7 @@ class MovableObject {
     otherDirection = false
     speedY = 0
     acceleration = 2.5
+    energy = 100
 
     applyGravity() {
         setInterval(() => {
@@ -42,7 +43,7 @@ class MovableObject {
         }
     }
 
-    
+
 
     isColliding(mo) {
         return this.x + this.width > mo.x &&
@@ -70,7 +71,6 @@ class MovableObject {
     }
 
     moveRight() {
-        console.log('Moving right')
         this.x += this.speed
         this.otherDirection = false
     }

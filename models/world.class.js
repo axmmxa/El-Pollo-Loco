@@ -26,9 +26,11 @@ class World {
             this.level.enemies.forEach( (enemy) => {
                 if(this.character.isColliding(enemy)) {
                     console.log("fail fail")
+                    this.character.energy -= 5
+                    console.log(this.character.energy)
                 }
             })
-        }, 1000)
+        }, 100)
     }
 
     draw() {
