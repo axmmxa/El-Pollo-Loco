@@ -5,12 +5,12 @@ class Character extends MovableObject {
 
     speed = 5
     IMAGES_WALKING = [
-            'img/2_character_pepe/2_walk/W-21.png',
-            'img/2_character_pepe/2_walk/W-22.png',
-            'img/2_character_pepe/2_walk/W-23.png',
-            'img/2_character_pepe/2_walk/W-24.png',
-            'img/2_character_pepe/2_walk/W-25.png',
-            'img/2_character_pepe/2_walk/W-26.png'
+        'img/2_character_pepe/2_walk/W-21.png',
+        'img/2_character_pepe/2_walk/W-22.png',
+        'img/2_character_pepe/2_walk/W-23.png',
+        'img/2_character_pepe/2_walk/W-24.png',
+        'img/2_character_pepe/2_walk/W-25.png',
+        'img/2_character_pepe/2_walk/W-26.png'
     ]
 
     IMAGES_JUMPING = [
@@ -35,6 +35,12 @@ class Character extends MovableObject {
         'img/2_character_pepe/5_dead/D-57.png'
     ]
 
+    IMAGES_HURT = [
+        'img/2_character_pepe/4_hurt/H-41.png',
+        'img/2_character_pepe/4_hurt/H-42.png',
+        'img/2_character_pepe/4_hurt/H-43.png',
+    ]
+
     world
 
     
@@ -45,6 +51,7 @@ class Character extends MovableObject {
         super().loadImage(this.IMAGES_WALKING[0])
         this.loadImages(this.IMAGES_WALKING)
         this.loadImages(this.IMAGES_JUMPING)
+        this.loadImages(this.IMAGES_HURT)
         this.loadImages(this.IMAGES_DEAD)
 
         this.applyGravity()
@@ -78,6 +85,10 @@ class Character extends MovableObject {
             if(this.isDead()) {
                 console.log("isDead")
                 this.playAnimation(this.IMAGES_DEAD)
+            }
+
+            else if(this.isHurt()) {
+                this.playAnimation(this.IMAGES_HURT)
             }
 
             else if(this.isAboveGround()) {
