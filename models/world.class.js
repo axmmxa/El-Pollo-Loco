@@ -6,6 +6,7 @@ class World {
     ctx
     keyboard
     camera_x = 0
+    statusBar = new StatusBar()
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d')
@@ -28,6 +29,7 @@ class World {
                     console.log("fail fail")
                     this.character.hit() 
                     console.log(this.character.energy)
+                    this.statusBar.setPercentage(this.character.energy)
                 }
             })
         }, 100)
@@ -39,6 +41,12 @@ class World {
         this.ctx.translate(this.camera_x, 0)
 
         this.addObjectsToMap(this.level.backgroundObjects)
+
+        this.ctx.translate(-this.camera_x, 0) //back
+        this.addToMap(this.statusBar)
+        this.ctx.translate(this.camera_x, 0) //forward
+
+
         this.addToMap(this.character)
         this.addObjectsToMap(this.level.enemies)
         this.addObjectsToMap(this.level.clouds)
