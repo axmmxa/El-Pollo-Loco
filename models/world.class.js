@@ -7,10 +7,13 @@ class World {
     keyboard
     camera_x = 0
     statusBar = new StatusBar()
+    coinbar = new CoinBar()
+    bottlebar = new BottleBar()
     throwableObjects = []
     coin = [new Coin(), new Coin(), new Coin(), new Coin(), new Coin(),]
     chicken = new Chicken()
     ChickenSmall = new ChickenSmall()
+
 
 
     constructor(canvas, keyboard) {
@@ -82,6 +85,8 @@ class World {
 
         this.ctx.translate(-this.camera_x, 0) //back
         this.addToMap(this.statusBar)
+        this.addToMap(this.coinbar)
+        this.addToMap(this.bottlebar)
         this.ctx.translate(this.camera_x, 0) //forward
 
         this.addObjectsToMap(this.coin)
