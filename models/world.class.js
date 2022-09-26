@@ -47,7 +47,6 @@ class World {
             if(this.character.isColliding(enemy) && !this.character.isAboveGround() && !enemy.dead) {
                 console.log("fail fail")
                 this.character.hit() 
-                console.log(this.character.energy)
                 this.statusBar.setPercentage(this.character.energy)
             }
 
@@ -73,6 +72,7 @@ class World {
                 coin.width = 0
                 this.coinAmount ++
                 console.log(this.coinAmount)
+                this.coinbar.setPercentage(this.coinAmount*20)
             }
         })
        
