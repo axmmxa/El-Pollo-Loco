@@ -99,10 +99,7 @@ class Character extends MovableObject {
                     // walk Animation    
                     this.playAnimation(this.IMAGES_WALKING)
                     }
-
             }
-
-           
         }, 50)
   
     }
