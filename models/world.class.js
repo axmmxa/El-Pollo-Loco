@@ -8,6 +8,9 @@ class World {
     camera_x = 0
     statusBar = new StatusBar()
     throwableObjects = []
+    coin = [new Coin(), new Coin(), new Coin(), new Coin(), new Coin(),]
+    chicken = new Chicken()
+    ChickenSmall = new ChickenSmall()
 
 
     constructor(canvas, keyboard) {
@@ -36,12 +39,30 @@ class World {
 
     checkCollisions() {
         this.level.enemies.forEach( (enemy) => {
-            if(this.character.isColliding(enemy)) {
+
+            if(this.character.isColliding(enemy) && !this.character.isAboveGround() && !enemy.dead) {
                 console.log("fail fail")
                 this.character.hit() 
                 console.log(this.character.energy)
                 this.statusBar.setPercentage(this.character.energy)
             }
+
+            if(this.character.isColliding(enemy) && this.character.isAboveGround() && (enemy instanceof Chicken || enemy instanceof ChickenSmall)) {
+                console.log("VON OBEN")
+                if( enemy instanceof Chicken) {
+                    enemy.playAnimation(this.chicken.IMAGES_DEAD)
+                    enemy.stopAnimation()
+                    enemy.dead = true
+                }
+
+                if( enemy instanceof ChickenSmall) {
+                    enemy.playAnimation(this.ChickenSmall.IMAGES_DEAD)
+                    enemy.stopAnimation()
+                    enemy.dead = true
+                }
+                
+            }
+
         })
     }
 
@@ -63,7 +84,7 @@ class World {
         this.addToMap(this.statusBar)
         this.ctx.translate(this.camera_x, 0) //forward
 
-
+        this.addObjectsToMap(this.coin)
         this.addToMap(this.character)
         this.addObjectsToMap(this.level.enemies)
         this.addObjectsToMap(this.level.clouds)
