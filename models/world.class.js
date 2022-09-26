@@ -8,9 +8,10 @@ class World {
     camera_x = 0
     statusBar = new StatusBar()
     coinbar = new CoinBar()
+    coinAmount = 0
     bottlebar = new BottleBar()
     throwableObjects = []
-    coin = [new Coin(), new Coin(), new Coin(), new Coin(), new Coin(),]
+    coins = [new Coin(), new Coin(), new Coin(), new Coin(), new Coin(),]
     chicken = new Chicken()
     ChickenSmall = new ChickenSmall()
 
@@ -63,10 +64,18 @@ class World {
                     enemy.stopAnimation()
                     enemy.dead = true
                 }
-                
             }
-
         })
+       
+        this.coins.forEach(coin => {
+            if(this.character.isColliding(coin) && (coin.heigth !=0 && coin.width !=0)) {
+                coin.height = 0
+                coin.width = 0
+                this.coinAmount ++
+                console.log(this.coinAmount)
+            }
+        })
+       
     }
 
     checkThrowObejects() {
@@ -89,7 +98,7 @@ class World {
         this.addToMap(this.bottlebar)
         this.ctx.translate(this.camera_x, 0) //forward
 
-        this.addObjectsToMap(this.coin)
+        this.addObjectsToMap(this.coins)
         this.addToMap(this.character)
         this.addObjectsToMap(this.level.enemies)
         this.addObjectsToMap(this.level.clouds)
