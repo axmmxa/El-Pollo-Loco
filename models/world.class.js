@@ -6,12 +6,18 @@ class World {
     ctx
     keyboard
     camera_x = 0
+
     statusBar = new StatusBar()
     coinbar = new CoinBar()
-    coinAmount = 0
+    bottlebar = new BottleBar()
+    
     bottlebar = new BottleBar()
     throwableObjects = []
+
+    coinAmount = 0
     coins = [new Coin(), new Coin(), new Coin(), new Coin(), new Coin(),]
+    bottleAmount = 0
+    bottles = [new Bottle(), new Bottle(), new Bottle(), new Bottle(), new Bottle(),]
     chicken = new Chicken()
     ChickenSmall = new ChickenSmall()
 
@@ -45,13 +51,11 @@ class World {
         this.level.enemies.forEach( (enemy) => {
 
             if(this.character.isColliding(enemy) && !this.character.isAboveGround() && !enemy.dead) {
-                console.log("fail fail")
                 this.character.hit() 
                 this.statusBar.setPercentage(this.character.energy)
             }
 
             if(this.character.isColliding(enemy) && this.character.isAboveGround() && (enemy instanceof Chicken || enemy instanceof ChickenSmall)) {
-                console.log("VON OBEN")
                 if( enemy instanceof Chicken) {
                     enemy.playAnimation(this.chicken.IMAGES_DEAD)
                     enemy.stopAnimation()
@@ -71,8 +75,17 @@ class World {
                 coin.height = 0
                 coin.width = 0
                 this.coinAmount ++
-                console.log(this.coinAmount)
                 this.coinbar.setPercentage(this.coinAmount*20)
+            }
+        })
+
+        this.bottles.forEach(bottle => {
+            if(this.character.isColliding(bottle) && (bottle.heigth !=0 && bottle.width !=0)) {
+              bottle.height = 0
+              bottle.width = 0
+              this.bottleAmount ++
+              this.bottlebar.setPercentage(this.bottleAmount*20)
+                //this.coinbar.setPercentage(this.bottleAmount*20)
             }
         })
        
@@ -99,6 +112,7 @@ class World {
         this.ctx.translate(this.camera_x, 0) //forward
 
         this.addObjectsToMap(this.coins)
+        this.addObjectsToMap(this.bottles)
         this.addToMap(this.character)
         this.addObjectsToMap(this.level.enemies)
         this.addObjectsToMap(this.level.clouds)
