@@ -12,14 +12,17 @@ class World {
     bottlebar = new BottleBar()
     
     bottlebar = new BottleBar()
-    throwableObjects = []
+    
 
     coinAmount = 0
     coins = [new Coin(), new Coin(), new Coin(), new Coin(), new Coin(),]
     bottleAmount = 0
     bottles = [new Bottle(), new Bottle(), new Bottle(), new Bottle(), new Bottle(),]
+    throwableObjects = [new ThrowableObject(), new ThrowableObject(), new ThrowableObject(), new ThrowableObject(), new ThrowableObject(),]
     chicken = new Chicken()
     ChickenSmall = new ChickenSmall()
+
+    endBoss = new Endboss()
 
 
 
@@ -47,7 +50,13 @@ class World {
         }, 100)
     }
 
+
+
+
+
+
     checkCollisions() {
+
         this.level.enemies.forEach( (enemy) => {
 
             if(this.character.isColliding(enemy) && !this.character.isAboveGround() && !enemy.dead) {
@@ -88,8 +97,19 @@ class World {
                 //this.coinbar.setPercentage(this.bottleAmount*20)
             }
         })
-       
+
+        setInterval( () => {
+            this.throwableObjects.forEach(throwableObject => {
+                if(this.endBoss.isColliding(throwableObject) && (throwableObject.heigth !=0 && throwableObject.width !=0)) {
+                    this.endBoss.hit()
+                }
+            })
+        } ,10000)
+        
     }
+
+
+
 
     checkThrowObejects() {
         if(this.keyboard.D) {

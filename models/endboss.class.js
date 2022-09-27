@@ -2,10 +2,11 @@ class Endboss extends MovableObject {
 
     height = 400
     width = 250
+   
 
-    y = 55
+    endbossEnergy = 100
 
-    IMAGES_WALKING= [
+    IMAGES_NORMAL= [
         'img/4_enemie_boss_chicken/2_alert/G6.png',
         'img/4_enemie_boss_chicken/2_alert/G7.png',
         'img/4_enemie_boss_chicken/2_alert/G8.png',
@@ -16,24 +17,56 @@ class Endboss extends MovableObject {
 
     ]
 
+    IMAGES_HURT = [
+        'img/4_enemie_boss_chicken/4_hurt/G21.png',
+        'img/4_enemie_boss_chicken/4_hurt/G22.png',
+        'img/4_enemie_boss_chicken/4_hurt/G23.png'
+    ]
+
+
+    IMAGES_DEAD = [
+        'img/4_enemie_boss_chicken/5_dead/G24.png',
+        'img/4_enemie_boss_chicken/5_dead/G25.png',
+        'img/4_enemie_boss_chicken/5_dead/G26.png',
+    ]
+
+
 
     constructor() {
-        super().loadImage(this.IMAGES_WALKING[0])
-        this.loadImages(this.IMAGES_WALKING)
-
+        super().loadImage(this.IMAGES_NORMAL[0])
+        this.loadImages(this.IMAGES_NORMAL)
+        
+        this.loadImages(this.IMAGES_HURT)
+        
+        this.loadImages(this.IMAGES_DEAD)
+        this.y = 55
         this.x = 2500
         this.animate()
     }
 
-    
+
+
+   
+
     animate() {
-        
-        setInterval( () => {
             
-            this.playAnimation(this.IMAGES_WALKING)
-        }, 100)
+            setInterval( () => {
+                    
+                    if (!this.isHurt()) {
+                        this.playAnimation(this.IMAGES_NORMAL)
+                        console.log("animate animate")
+                    } 
+                    if (this.isHurt()) {
+                        this.playAnimation(this.IMAGES_HURT)
+                        console.log("hurt hurt")
+                    }
+
+             }, 200)
+
         
     }
+
+  
 
 
 }
