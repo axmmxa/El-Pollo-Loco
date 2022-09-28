@@ -11,13 +11,13 @@ class World {
     coinbar = new CoinBar()
     bottlebar = new BottleBar()
     
-    bottlebar = new BottleBar()
+    
     
 
     coinAmount = 0
     coins = [new Coin(), new Coin(), new Coin(), new Coin(), new Coin(),]
     bottleAmount = 0
-    bottles = [new Bottle(), new Bottle(), new Bottle(), new Bottle(), new Bottle(),]
+    bottles = [new Bottle(), new Bottle(), new Bottle(), new Bottle(), new Bottle(), new Bottle()]
     throwableObjects = [new ThrowableObject(), new ThrowableObject(), new ThrowableObject(), new ThrowableObject(), new ThrowableObject(),]
     chicken = new Chicken()
     ChickenSmall = new ChickenSmall()
@@ -38,7 +38,6 @@ class World {
 
     setWorld() {
         this.character.world = this
-
     }
 
     run() {
@@ -88,24 +87,27 @@ class World {
             }
         })
 
+
         this.bottles.forEach(bottle => {
             if(this.character.isColliding(bottle) && (bottle.heigth !=0 && bottle.width !=0)) {
               bottle.height = 0
               bottle.width = 0
               this.bottleAmount ++
               this.bottlebar.setPercentage(this.bottleAmount*20)
-                //this.coinbar.setPercentage(this.bottleAmount*20)
             }
         })
 
-        
+
+        // Collision Bottle with endboss
         this.throwableObjects.forEach(throwableObject => {
             if(this.endBoss.isColliding(throwableObject) && (throwableObject.heigth !=0 && throwableObject.width !=0)) {
                 console.log("endboss collision detected")
-                this.endBoss.endbossEnergy -= 10
+                this.endBoss.endbossEnergy -= 4.5
                 console.log(this.endBoss.endbossEnergy)
                 }
         })
+
+    
        
         
     }
@@ -115,8 +117,13 @@ class World {
 
     checkThrowObejects() {
         if(this.keyboard.D) {
-            let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100)
+            if(this.bottleAmount != 0) {
+                let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100)
             this.throwableObjects.push(bottle)
+            this.bottleAmount --
+            this.bottlebar.setPercentage(this.bottleAmount*20)
+            }
+            
         }
     }
 
@@ -158,12 +165,7 @@ class World {
         if(mo.otherDirection) {
             this.flipImage(mo)
         }
-
-        ;
-
         mo.draw(this.ctx)
-
-        mo.drawFrame(this.ctx)
 
         if (mo.otherDirection) {
             this.flipImageBack(mo)

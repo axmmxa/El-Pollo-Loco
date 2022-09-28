@@ -2,8 +2,8 @@ class Bottle extends CollactableItem {
 
     height = 100
     width = 100
-
     y = 320
+    amountBottles 
 
     IMAGES = [
         'img/6_salsa_bottle/1_salsa_bottle_on_ground.png',

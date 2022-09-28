@@ -50,25 +50,19 @@ class Endboss extends MovableObject {
 
     animate() {
 
-            
             setInterval( () => {
                 if(this.endbossEnergy == 100) {
-                    console.log(this.endbossEnergy)
-                    console.log("first loop")
                     this.playAnimation(this.IMAGES_NORMAL)
                 }
 
                 if(this.endbossEnergy < 100) {
-                    console.log(this.endbossEnergy)
-                    console.log("second loop")
                     this.playAnimation(this.IMAGES_HURT)
                 }
-                
+
+                if(this.endbossEnergy < 0) {
+                    this.playAnimation(this.IMAGES_DEAD)
+                }
          }, 200)
-              
     }
-
-  
-
 
 }
