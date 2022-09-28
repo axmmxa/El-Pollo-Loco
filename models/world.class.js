@@ -22,7 +22,7 @@ class World {
     chicken = new Chicken()
     ChickenSmall = new ChickenSmall()
 
-    endBoss = new Endboss()
+    endBoss = level1.enemies[level1.enemies.length -1]
     
     
 
