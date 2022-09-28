@@ -17,7 +17,7 @@ class World {
     coinAmount = 0
     coins = [new Coin(), new Coin(), new Coin(), new Coin(), new Coin(),]
     bottleAmount = 0
-    bottles = [new Bottle(), new Bottle(), new Bottle(), new Bottle(), new Bottle(), new Bottle()]
+    bottles = [new Bottle(), new Bottle(), new Bottle(), new Bottle(), new Bottle()]
     throwableObjects = [new ThrowableObject(), new ThrowableObject(), new ThrowableObject(), new ThrowableObject(), new ThrowableObject(),]
     chicken = new Chicken()
     ChickenSmall = new ChickenSmall()
