@@ -23,8 +23,8 @@ class World {
     ChickenSmall = new ChickenSmall()
 
     endBoss = new Endboss()
-
-
+    
+    
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d')
@@ -98,13 +98,15 @@ class World {
             }
         })
 
-        setInterval( () => {
-            this.throwableObjects.forEach(throwableObject => {
-                if(this.endBoss.isColliding(throwableObject) && (throwableObject.heigth !=0 && throwableObject.width !=0)) {
-                    this.endBoss.hit()
+        
+        this.throwableObjects.forEach(throwableObject => {
+            if(this.endBoss.isColliding(throwableObject) && (throwableObject.heigth !=0 && throwableObject.width !=0)) {
+                console.log("endboss collision detected")
+                this.endBoss.endbossEnergy -= 10
+                console.log(this.endBoss.endbossEnergy)
                 }
-            })
-        } ,10000)
+        })
+       
         
     }
 
