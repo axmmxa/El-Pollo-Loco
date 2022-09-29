@@ -23,6 +23,8 @@ class World {
     ChickenSmall = new ChickenSmall()
 
     endBoss = level1.enemies[level1.enemies.length -1]
+
+    gameEnd = new GameEnd()
     
     
 
@@ -46,6 +48,7 @@ class World {
             // check Collisions
             this.checkCollisions()
             this.checkThrowObejects()
+            this.checkGameEnd()
         }, 100)
     }
 
@@ -102,15 +105,26 @@ class World {
         this.throwableObjects.forEach(throwableObject => {
             if(this.endBoss.isColliding(throwableObject) && (throwableObject.heigth !=0 && throwableObject.width !=0)) {
                 console.log("endboss collision detected")
-                this.endBoss.endbossEnergy -= 5
+                this.endBoss.endbossEnergy -= 6
                 console.log(this.endBoss.endbossEnergy)
                 }
-        })
-
-    
-       
-        
+        }) 
     }
+
+
+    checkGameEnd() {
+        if(this.endBoss.endbossEnergy < 0){
+            console.log("Endboss dead")
+            this.gameEnd.wonGame()
+        }
+
+        if(this.character.energy <= 0) {
+            this.gameEnd.lostGame()
+            console.log("you lost")
+        }
+    }
+
+
 
 
 
@@ -183,4 +197,5 @@ class World {
         mo.x = mo.x * -1
         this.ctx.restore()
     }
+
 }
