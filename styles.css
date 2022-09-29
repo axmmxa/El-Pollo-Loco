@@ -31,6 +31,8 @@ background-color: #f8c568;
 
 }
 
+
+
 h1 {
     color: #ffb710;
 }
@@ -45,8 +47,41 @@ canvas {
     display: block;
 }
 
+.play-info {
+    background-color: #ffb710;
+    display: flex;
+    width: 720px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.play-info p {
+    font-size: 16px;
+}
+
+.move-info {
+    display: flex;
+    justify-content: space-evenly;
+    width: 110px;
+    color: beige;
+    
+}
+
+.move-button {
+    display: flex;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 20px;
+    color: white;
+    text-decoration: underline;
+}
+
 @media only screen and (max-width: 760px) {
     canvas {
+        width: 100vh;
+    }
+
+    .play-info {
         width: 100vh;
     }
 }
@@ -55,16 +90,18 @@ canvas {
     canvas {
         height: 100vh;
     }
+    .play-info {
+        height: 100vh;
+    }
 }
 
 @media only screen and (max-width: 760px) {
     canvas {
-        width: 100vh;
+        width: 100%;
+    }
+
+    .play-info {
+        width: 100%;
     }
 }
 
-@media only screen and (max-height: 480px) {
-    canvas {
-        height: 100vh;
-    }
-}

@@ -14,6 +14,30 @@ function startGame() {
     <canvas id="canvas" width="720" height="480">
     
     </canvas>
+
+    <div class="play-info">
+
+        <div class="move-info">
+            <p>move right</p>
+            <p class="move-button"> > </p>
+        </div>
+
+        <div class="move-info">
+            <p>move left</p>
+            <p class="move-button"> < </p>
+        </div>
+
+        <div class="move-info">
+            <p>jump</p>
+            <p class="move-button"> space </p>
+        </div>
+
+        <div class="move-info">
+            <p>throw bottles</p>
+            <p class="move-button"> D </p>
+        </div>
+        
+    </div>
     `
 
     canvas = document.getElementById('canvas')
