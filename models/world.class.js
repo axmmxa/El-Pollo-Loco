@@ -102,7 +102,7 @@ class World {
         this.throwableObjects.forEach(throwableObject => {
             if(this.endBoss.isColliding(throwableObject) && (throwableObject.heigth !=0 && throwableObject.width !=0)) {
                 console.log("endboss collision detected")
-                this.endBoss.endbossEnergy -= 4.5
+                this.endBoss.endbossEnergy -= 5
                 console.log(this.endBoss.endbossEnergy)
                 }
         })

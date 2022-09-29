@@ -3,13 +3,25 @@ let world
 let keyboard = new Keyboard()
 
 
-function init() {
+
+
+
+function startGame() {
+    document.getElementById('body').innerHTML = ''
+    document.getElementById('body').innerHTML += `
+    <h1>El Pollo Loco</h1>
+
+    <canvas id="canvas" width="720" height="480">
+    
+    </canvas>
+    `
+
     canvas = document.getElementById('canvas')
     world = new World(canvas, keyboard)
     
 
     console.log("My character is", world.character)
-   
+
 }
 
 
