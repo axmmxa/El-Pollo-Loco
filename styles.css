@@ -4,10 +4,13 @@
 }
 
 body {
+    margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-image: url('img/10_screenPictures/dessert.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 body > img {
@@ -45,6 +48,15 @@ h1 {
 canvas {
     background-color: black;
     display: block;
+    z-index: 2;
+}
+
+.fullscreen-img {
+    height: 60px;
+    background-color: red;
+    z-index: 3;
+    position: absolute;
+    top: 300x;
 }
 
 .play-info {
@@ -53,17 +65,32 @@ canvas {
     width: 720px;
     align-items: center;
     justify-content: space-evenly;
+    font-size: 16px;
 }
 
 .play-info p {
     font-size: 16px;
 }
 
+.play-info-mobile {
+    background-color: #ffb710;
+    display: flex;
+    width: 720px;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 16px;
+    height: 40px;
+}
+
+.play-info-mobile img {
+    height: 30px;
+}
+
 .move-info {
     display: flex;
     justify-content: space-evenly;
     width: 110px;
-    color: beige;
+    color: black;
     
 }
 
@@ -72,22 +99,23 @@ canvas {
     align-items: center;
     font-weight: bolder;
     font-size: 20px;
-    color: white;
-    text-decoration: underline;
+    color: black;
 }
 
+
+
 .game-over-img {
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
 }
 
 @media only screen and (max-width: 760px) {
     canvas {
-        width: 100vh;
+        width: 100vw;
     }
 
     .play-info {
-        width: 100vh;
+        width: 100vw;
     }
 }
 
@@ -97,8 +125,14 @@ canvas {
     }
     .play-info {
         height: 100vh;
+        display: none;
     }
-}
+
+    .play-info-mobile {
+        height: 100vh;
+    }
+
+} 
 
 @media only screen and (max-width: 760px) {
     canvas {
@@ -107,6 +141,17 @@ canvas {
 
     .play-info {
         width: 100%;
+        display: none;
     }
+
+    .play-info-mobile {
+        width: 100%;
+    }
+
+    .headline {
+        display: none;
+    }
+    
+
 }
 

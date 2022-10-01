@@ -9,34 +9,62 @@ let keyboard = new Keyboard()
 function startGame() {
     document.getElementById('body').innerHTML = ''
     document.getElementById('body').innerHTML += `
-    <h1>El Pollo Loco</h1>
 
-    <canvas id="canvas" width="720" height="480">
+    <h1 class="headline">El Pollo Loco</h1>
+
+    <div id="fullscreen">
+
+        <canvas id="canvas" width="720" height="480">
+            
+            
+        </canvas>
+
+    </div>
     
-    </canvas>
+    
 
     <div class="play-info">
 
         <div class="move-info">
-            <p>move right</p>
-            <p class="move-button"> > </p>
+            <p>move left</p>
+            <p class="move-button"><</p>
         </div>
 
         <div class="move-info">
-            <p>move left</p>
-            <p class="move-button"> < </p>
+            <p>throw bottle</p>
+            <p class="move-button">D</p>
         </div>
 
         <div class="move-info">
             <p>jump</p>
-            <p class="move-button"> space </p>
+            <p class="move-button">^</p>
         </div>
 
         <div class="move-info">
-            <p>throw bottles</p>
-            <p class="move-button"> D </p>
+            <p>move right</p>
+            <p class="move-button">></p>
         </div>
         
+    </div>
+
+    <div class="play-info-mobile">
+
+        <div class="move-info-mobile">
+            <img id="move-left" src="img/11_mobile_bar/mobile-left.png">
+        </div>
+
+        <div class="move-info-mobile">
+            <img src="img/11_mobile_bar/mobile-bottle.png">
+        </div>
+
+        <div class="move-info-mobile">
+            <img src="img/11_mobile_bar/mobile-up.png">
+        </div>
+
+        <div class="move-info-mobile">
+            <img src="img/11_mobile_bar/mobile-right.png">
+        </div>
+
     </div>
     `
 
@@ -48,6 +76,16 @@ function startGame() {
 
 }
 
+
+document.getElementById('move-left').addEventListener('touchstart', () => {
+    keyboard.LEFT = true
+    
+})
+
+document.getElementById('move-left').addEventListener('touchend', () => {
+    keyboard.LEFT = false
+    
+})
 
 window.addEventListener('keydown', (event) => {
     
@@ -74,9 +112,6 @@ window.addEventListener('keydown', (event) => {
     if(event.keyCode == 68) {
         keyboard.D = true
     }
-    
-
-    
     
 })
 
