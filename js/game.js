@@ -50,7 +50,7 @@ function startGame() {
     <div class="play-info-mobile">
 
         <div class="move-info-mobile">
-            <img id="move-left" src="img/11_mobile_bar/mobile-left.png">
+            <img id="touch-move-left" src="img/11_mobile_bar/mobile-left.png">
         </div>
 
         <div class="move-info-mobile">
@@ -76,16 +76,6 @@ function startGame() {
 
 }
 
-
-document.getElementById('move-left').addEventListener('touchstart', () => {
-    keyboard.LEFT = true
-    
-})
-
-document.getElementById('move-left').addEventListener('touchend', () => {
-    keyboard.LEFT = false
-    
-})
 
 window.addEventListener('keydown', (event) => {
     
@@ -114,6 +104,19 @@ window.addEventListener('keydown', (event) => {
     }
     
 })
+
+
+document.getElementById('move-info-mobile').addEventListener('touchstart', (e) => {
+    e.preventDefault()
+    keyboard.LEFT = true
+})
+
+document.getElementById('move-info-mobile').addEventListener('touchend', (e) => {
+    e.preventDefault()
+    keyboard.LEFT = false
+})
+
+
 
 window.addEventListener('keyup', (event) => {
 
