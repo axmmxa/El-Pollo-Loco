@@ -106,7 +106,7 @@ window.addEventListener('keydown', (event) => {
 })
 
 
-document.getElementById('touch-move-left').addEventListener('touchstart', (e) => {
+/*document.getElementById('touch-move-left').addEventListener('touchstart', (e) => {
     e.preventDefault()
     keyboard.LEFT = true
 })
@@ -114,7 +114,7 @@ document.getElementById('touch-move-left').addEventListener('touchstart', (e) =>
 document.getElementById('touch-move-left').addEventListener('touchend', (e) => {
     e.preventDefault()
     keyboard.LEFT = false
-})
+}) */
 
 
 

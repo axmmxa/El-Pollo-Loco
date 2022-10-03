@@ -30,6 +30,13 @@ class Endboss extends MovableObject {
         'img/4_enemie_boss_chicken/5_dead/G26.png',
     ]
 
+    IMAGES_WALKING = [
+        'img/4_enemie_boss_chicken/1_walk/G1.png',
+        'img/4_enemie_boss_chicken/1_walk/G2.png',
+        'img/4_enemie_boss_chicken/1_walk/G3.png',
+        'img/4_enemie_boss_chicken/1_walk/G4.png',
+    ]
+
 
 
     constructor() {
@@ -37,7 +44,7 @@ class Endboss extends MovableObject {
         this.loadImages(this.IMAGES_NORMAL)
         
         this.loadImages(this.IMAGES_HURT)
-        
+        this.loadImages(this.IMAGES_WALKING)
         this.loadImages(this.IMAGES_DEAD)
         this.y = 55
         this.x = 2500
@@ -57,6 +64,17 @@ class Endboss extends MovableObject {
 
                 if(this.endbossEnergy < 100) {
                     this.playAnimation(this.IMAGES_HURT)
+                }
+
+                if(this.endbossEnergy < 60) {
+                    setInterval( () => {
+            
+                        this.playAnimation(this.IMAGES_WALKING)
+                    }, 100)
+
+                    setInterval( () => {
+                        this.x -= this.speed
+                    }, 1000 / 60)
                 }
 
                 if(this.endbossEnergy < 0) {
