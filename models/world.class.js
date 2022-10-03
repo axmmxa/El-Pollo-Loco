@@ -109,6 +109,12 @@ class World {
                 console.log(this.endBoss.endbossEnergy)
                 }
         }) 
+
+        //Collision Endboss with Character 
+        if(this.endBoss.isColliding(this.character)) {
+            this.character.energy = 0
+            console.log("endboss colliding")
+        }
     }
 
 

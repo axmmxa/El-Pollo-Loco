@@ -66,6 +66,7 @@ class Endboss extends MovableObject {
                     this.playAnimation(this.IMAGES_HURT)
                 }
 
+
                 if(this.endbossEnergy < 60) {
                     setInterval( () => {
             
@@ -80,6 +81,7 @@ class Endboss extends MovableObject {
                 if(this.endbossEnergy < 0) {
                     this.playAnimation(this.IMAGES_DEAD)
                 }
+                
          }, 200)
     }
 
