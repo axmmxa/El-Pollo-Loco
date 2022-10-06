@@ -11,6 +11,8 @@ class World {
     coinbar = new CoinBar()
     bottlebar = new BottleBar()
     
+
+  
     
     
 

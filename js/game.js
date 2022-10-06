@@ -5,7 +5,6 @@ let keyboard = new Keyboard()
 
 
 
-
 function startGame() {
     document.getElementById('body').innerHTML = ''
     document.getElementById('body').innerHTML += `
@@ -49,20 +48,20 @@ function startGame() {
 
     <div class="play-info-mobile">
 
-        <div class="move-info-mobile">
+        <div onclick="listenForTouches()" class="move-info-mobile">
             <img id="touch-move-left" src="img/11_mobile_bar/mobile-left.png">
         </div>
 
-        <div class="move-info-mobile">
-            <img src="img/11_mobile_bar/mobile-bottle.png">
+        <div onclick="listenForTouches()" class="move-info-mobile">
+            <img id="throw-bottle" src="img/11_mobile_bar/mobile-bottle.png">
         </div>
 
-        <div class="move-info-mobile">
-            <img src="img/11_mobile_bar/mobile-up.png">
+        <div onclick="listenForTouches()" class="move-info-mobile">
+            <img id="jump-up" src="img/11_mobile_bar/mobile-up.png">
         </div>
 
-        <div class="move-info-mobile">
-            <img src="img/11_mobile_bar/mobile-right.png">
+        <div onclick="listenForTouches()" class="move-info-mobile">
+            <img id="touch-move-right" src="img/11_mobile_bar/mobile-right.png">
         </div>
 
     </div>
@@ -106,15 +105,8 @@ window.addEventListener('keydown', (event) => {
 })
 
 
-/*document.getElementById('touch-move-left').addEventListener('touchstart', (e) => {
-    e.preventDefault()
-    keyboard.LEFT = true
-})
 
-document.getElementById('touch-move-left').addEventListener('touchend', (e) => {
-    e.preventDefault()
-    keyboard.LEFT = false
-}) */
+
 
 
 
@@ -145,3 +137,46 @@ window.addEventListener('keyup', (event) => {
     }
     
 })
+
+
+function listenForTouches() {
+    document.getElementById('touch-move-left').addEventListener('touchstart', (e) => {
+        e.preventDefault()
+        keyboard.LEFT = true
+    })
+    
+    document.getElementById('touch-move-left').addEventListener('touchend', (e) => {
+        e.preventDefault()
+        keyboard.LEFT = false
+    })
+
+    document.getElementById('throw-bottle').addEventListener('touchstart', (e) => {
+        e.preventDefault()
+        keyboard.D = true
+    })
+    
+    document.getElementById('throw-bottle').addEventListener('touchend', (e) => {
+        e.preventDefault()
+        keyboard.D = false
+    })
+
+    document.getElementById('jump-up').addEventListener('touchstart', (e) => {
+        e.preventDefault()
+        keyboard.SPACE = true
+    })
+    
+    document.getElementById('jump-up').addEventListener('touchend', (e) => {
+        e.preventDefault()
+        keyboard.SPACE = false
+    })
+
+    document.getElementById('touch-move-right').addEventListener('touchstart', (e) => {
+        e.preventDefault()
+        keyboard.RIGHT = true
+    })
+    
+    document.getElementById('touch-move-right').addEventListener('touchend', (e) => {
+        e.preventDefault()
+        keyboard.RIGHT = false
+    })
+}
