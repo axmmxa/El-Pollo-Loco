@@ -28,7 +28,11 @@ class World {
 
     gameEnd = new GameEnd()
     
-    
+    item_sound = new Audio('audio/item.mp3')
+    win_sound = new Audio('audio/win.mp3')
+    lose_sound = new Audio('audio/lose.mp3')
+    chicken_sound = new Audio('audio/chicken.mp3')
+    bottle_break_sound = new Audio('audio/bottle_breaking.mp3')
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d')
@@ -58,7 +62,7 @@ class World {
 
 
 
-
+    // Collision Character with enemies
     checkCollisions() {
 
         this.level.enemies.forEach( (enemy) => {
@@ -73,32 +77,36 @@ class World {
                     enemy.playAnimation(this.chicken.IMAGES_DEAD)
                     enemy.stopAnimation()
                     enemy.dead = true
+                    this.chicken_sound.play()
                 }
 
                 if( enemy instanceof ChickenSmall) {
                     enemy.playAnimation(this.ChickenSmall.IMAGES_DEAD)
                     enemy.stopAnimation()
                     enemy.dead = true
+                    this.chicken_sound.play()
                 }
             }
         })
-       
+       //Collision  character with coin
         this.coins.forEach(coin => {
             if(this.character.isColliding(coin) && (coin.heigth !=0 && coin.width !=0)) {
                 coin.height = 0
                 coin.width = 0
                 this.coinAmount ++
                 this.coinbar.setPercentage(this.coinAmount*20)
+                this.item_sound.play()
             }
         })
 
-
+        // Collision Bottle with character
         this.bottles.forEach(bottle => {
             if(this.character.isColliding(bottle) && (bottle.heigth !=0 && bottle.width !=0)) {
               bottle.height = 0
               bottle.width = 0
               this.bottleAmount ++
               this.bottlebar.setPercentage(this.bottleAmount*20)
+              this.item_sound.play()
             }
         })
 
@@ -108,6 +116,7 @@ class World {
             if(this.endBoss.isColliding(throwableObject) && (throwableObject.heigth !=0 && throwableObject.width !=0)) {
                 console.log("endboss collision detected")
                 this.endBoss.endbossEnergy -= 6
+                this.bottle_break_sound.play()
                 console.log(this.endBoss.endbossEnergy)
                 }
         }) 
@@ -124,10 +133,12 @@ class World {
         if(this.endBoss.endbossEnergy < 0){
             console.log("Endboss dead")
             this.gameEnd.wonGame()
+            this.win_sound.play()
         }
 
         if(this.character.energy <= 0) {
             this.gameEnd.lostGame()
+            this.lose_sound.play()
             console.log("you lost")
         }
     }
