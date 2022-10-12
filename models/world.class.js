@@ -119,7 +119,7 @@ class World {
         this.throwableObjects.forEach(throwableObject => {
 
             if(this.endBoss.isColliding(throwableObject) && !throwableObject.isBroken && (throwableObject.heigth !=0 && throwableObject.width !=0 && throwableObject.y > 350)) {
-                this.endBoss.endbossEnergy -= 20
+                this.endBoss.endbossEnergy -= 40
                 this.bottle_break_sound.play()
 
                 throwableObject.isBroken = true
@@ -148,6 +148,7 @@ class World {
             console.log("Endboss dead")
             this.gameEnd.wonGame()
             this.win_sound.play()
+            this.restartGame()
         }
 
         if(this.character.energy <= 0) {
@@ -158,7 +159,7 @@ class World {
     }
 
 
-
+   
 
 
 

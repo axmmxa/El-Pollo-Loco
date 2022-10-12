@@ -16,6 +16,7 @@ class GameEnd extends DrawableObject{
         document.getElementById('body').innerHTML =''
         document.getElementById('body').innerHTML += `
         <img class="game-over-img" src="img/9_intro_outro_screens/game_over/game over!.png">
+        <a href="index.html">play again</a>
         `
     }
 
@@ -23,6 +24,7 @@ class GameEnd extends DrawableObject{
         document.getElementById('body').innerHTML =''
         document.getElementById('body').innerHTML += `
         <img class="game-over-img" src="img/9_intro_outro_screens/game_over/you lost.png">
+        <a href="index.html">play again</a>
         `
     }
 
