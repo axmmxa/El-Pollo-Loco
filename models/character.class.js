@@ -2,6 +2,7 @@ class Character extends MovableObject {
   
     height = 300
     y = 80
+    groundPosition = 120
 
     speed = 5
     IMAGES_WALKING = [

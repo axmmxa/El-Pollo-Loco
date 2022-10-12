@@ -28,6 +28,7 @@ class World {
 
     gameEnd = new GameEnd()
     
+
     item_sound = new Audio('audio/item.mp3')
     win_sound = new Audio('audio/win.mp3')
     lose_sound = new Audio('audio/lose.mp3')
@@ -110,16 +111,29 @@ class World {
             }
         })
 
+        //Collision Bottle with ground
+
+       
 
         // Collision Bottle with endboss
         this.throwableObjects.forEach(throwableObject => {
-            if(this.endBoss.isColliding(throwableObject) && (throwableObject.heigth !=0 && throwableObject.width !=0)) {
-                console.log("endboss collision detected")
-                this.endBoss.endbossEnergy -= 6
+
+            if(this.endBoss.isColliding(throwableObject) && !throwableObject.isBroken && (throwableObject.heigth !=0 && throwableObject.width !=0 && throwableObject.y > 350)) {
+                this.endBoss.endbossEnergy -= 20
                 this.bottle_break_sound.play()
-                console.log(this.endBoss.endbossEnergy)
+
+                throwableObject.isBroken = true
+                throwableObject.groundPosition =  throwableObject.y
+                throwableObject.splash()
+                
+                setTimeout( () => {
+                    throwableObject.height = 0
+                }, 500)
+                
                 }
         }) 
+
+
 
         //Collision Endboss with Character 
         if(this.endBoss.isColliding(this.character)) {
