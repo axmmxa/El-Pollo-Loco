@@ -50,7 +50,7 @@ class World {
     }
 
     run() {
-        setInterval( () => {
+        setStoppableInteral( () => {
 
             // check Collisions
             this.checkCollisions()

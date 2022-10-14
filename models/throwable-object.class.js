@@ -39,7 +39,7 @@ class ThrowableObject extends MovableObject {
     }
 
     rotation() {
-        setInterval( () => {
+        setStoppableInteral( () => {
             
                 if(this.isAboveGround() && !this.isBroken){
                     this.playAnimation(this.IMAGES_BOTTLE_ROTATION)
@@ -50,7 +50,7 @@ class ThrowableObject extends MovableObject {
     }
 
     splash() {
-         this.breakbottle =setInterval( () => {
+         this.breakbottle =setStoppableInteral( () => {
             this.playAnimation(this.IMAGES_BOTTLE_SPLASH)
             console.log('splash')
             this.stopSplash()

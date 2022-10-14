@@ -57,7 +57,7 @@ class Endboss extends MovableObject {
 
     animate() {
 
-            setInterval( () => {
+            setStoppableInteral( () => {
                 if(this.endbossEnergy == 100) {
                     this.playAnimation(this.IMAGES_NORMAL)
                 }
@@ -68,12 +68,12 @@ class Endboss extends MovableObject {
 
 
                 if(this.endbossEnergy < 60) {
-                    setInterval( () => {
+                    setStoppableInteral( () => {
             
                         this.playAnimation(this.IMAGES_WALKING)
                     }, 100)
 
-                    setInterval( () => {
+                    setStoppableInteral( () => {
                         this.x -= this.speed
                     }, 1000 / 60)
                 }

@@ -13,6 +13,7 @@ class GameEnd extends DrawableObject{
     }
 
     wonGame() {
+        stopInterval()
         document.getElementById('body').innerHTML =''
         document.getElementById('body').innerHTML += `
         <img class="game-over-img" src="img/9_intro_outro_screens/game_over/game over!.png">
@@ -21,6 +22,7 @@ class GameEnd extends DrawableObject{
     }
 
     lostGame() {
+        stopInterval()
         document.getElementById('body').innerHTML =''
         document.getElementById('body').innerHTML += `
         <img class="game-over-img" src="img/9_intro_outro_screens/game_over/you lost.png">
