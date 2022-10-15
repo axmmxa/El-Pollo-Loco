@@ -2,8 +2,6 @@ class Endboss extends MovableObject {
 
     height = 400
     width = 250
-   
-
     endbossEnergy = 100
 
     IMAGES_NORMAL= [
@@ -50,10 +48,6 @@ class Endboss extends MovableObject {
         this.x = 2500
         this.animate()
     }
-
-
-
-   
 
     animate() {
 

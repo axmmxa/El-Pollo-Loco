@@ -3,8 +3,10 @@ class Character extends MovableObject {
     height = 300
     y = 80
     groundPosition = 120
-
     speed = 5
+    walking_sound = new Audio('audio/running.mp3')
+    jump_sound = new Audio('audio/jump.mp3')
+
     IMAGES_WALKING = [
         'img/2_character_pepe/2_walk/W-21.png',
         'img/2_character_pepe/2_walk/W-22.png',
@@ -44,8 +46,7 @@ class Character extends MovableObject {
 
     world
 
-    walking_sound = new Audio('audio/running.mp3')
-    jump_sound = new Audio('audio/jump.mp3')
+   
 
     
 
@@ -78,8 +79,6 @@ class Character extends MovableObject {
                 this.walking_sound.play()
                 }
             
-             
-                
                 if(this.world.keyboard.SPACE && !this.isAboveGround()) {
                 this.jump()
                 this.jump_sound.play()

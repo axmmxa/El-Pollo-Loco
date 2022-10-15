@@ -4,10 +4,8 @@ class DrawableObject {
     imageCache = [] 
     x = 120
     y = 280
-    
     height = 150
     width = 100
-
 
     loadImage(path) {
         this.img = new Image()

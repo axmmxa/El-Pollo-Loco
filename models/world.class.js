@@ -6,16 +6,9 @@ class World {
     ctx
     keyboard
     camera_x = 0
-
     statusBar = new StatusBar()
     coinbar = new CoinBar()
     bottlebar = new BottleBar()
-    
-
-  
-    
-    
-
     coinAmount = 0
     coins = [new Coin(), new Coin(), new Coin(), new Coin(), new Coin(),]
     bottleAmount = 0
@@ -23,12 +16,8 @@ class World {
     throwableObjects = [new ThrowableObject(), new ThrowableObject(), new ThrowableObject(), new ThrowableObject(), new ThrowableObject(),]
     chicken = new Chicken()
     ChickenSmall = new ChickenSmall()
-
     endBoss = level1.enemies[level1.enemies.length -1]
-
     gameEnd = new GameEnd()
-    
-
     item_sound = new Audio('audio/item.mp3')
     win_sound = new Audio('audio/win.mp3')
     lose_sound = new Audio('audio/lose.mp3')
@@ -51,17 +40,12 @@ class World {
 
     run() {
         setStoppableInteral( () => {
-
             // check Collisions
             this.checkCollisions()
             this.checkThrowObejects()
             this.checkGameEnd()
         }, 100)
     }
-
-
-
-
 
     // Collision Character with enemies
     checkCollisions() {
@@ -118,13 +102,14 @@ class World {
         // Collision Bottle with endboss
         this.throwableObjects.forEach(throwableObject => {
 
-            if(this.endBoss.isColliding(throwableObject) && !throwableObject.isBroken && (throwableObject.heigth !=0 && throwableObject.width !=0 && throwableObject.y > 350)) {
+            if(this.endBoss.isColliding(throwableObject) && !throwableObject.isBroken && (throwableObject.heigth !=0 && throwableObject.width !=0 && throwableObject.y > 90)) {
                 this.endBoss.endbossEnergy -= 40
                 this.bottle_break_sound.play()
 
                 throwableObject.isBroken = true
-                throwableObject.groundPosition =  throwableObject.y
                 throwableObject.splash()
+                //throwableObject.groundPosition =  throwableObject.y
+                
                 
                 setTimeout( () => {
                     throwableObject.height = 0
@@ -132,8 +117,6 @@ class World {
                 
                 }
         }) 
-
-
 
         //Collision Endboss with Character 
         if(this.endBoss.isColliding(this.character)) {
@@ -145,7 +128,6 @@ class World {
 
     checkGameEnd() {
         if(this.endBoss.endbossEnergy < 0){
-            console.log("Endboss dead")
             this.gameEnd.wonGame()
             this.win_sound.play()
             this.restartGame()
@@ -154,14 +136,8 @@ class World {
         if(this.character.energy <= 0) {
             this.gameEnd.lostGame()
             this.lose_sound.play()
-            console.log("you lost")
         }
     }
-
-
-   
-
-
 
     checkThrowObejects() {
         if(this.keyboard.D) {

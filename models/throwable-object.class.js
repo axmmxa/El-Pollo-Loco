@@ -52,13 +52,11 @@ class ThrowableObject extends MovableObject {
     splash() {
          this.breakbottle =setStoppableInteral( () => {
             this.playAnimation(this.IMAGES_BOTTLE_SPLASH)
-            console.log('splash')
             this.stopSplash()
         }, 25)
     }
 
     stopSplash() {
-
         setTimeout( () => {
             clearInterval(this.breakbottle)
             console.log("stop plash")
