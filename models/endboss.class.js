@@ -1,5 +1,5 @@
 class Endboss extends MovableObject {
-
+   
     height = 400
     width = 250
     endbossEnergy = 100
@@ -62,13 +62,17 @@ class Endboss extends MovableObject {
 
 
                 if(this.endbossEnergy < 60) {
+                    
                     setStoppableInteral( () => {
             
                         this.playAnimation(this.IMAGES_WALKING)
                     }, 100)
 
                     setStoppableInteral( () => {
-                        this.x -= this.speed
+                        let i = 0.05
+                        console.log(i)
+                        this.x -= (this.speed - i)
+                        i = i + 0.025
                     }, 1000 / 60)
                 }
 
