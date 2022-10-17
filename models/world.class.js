@@ -39,7 +39,7 @@ class World {
     }
 
     run() {
-        setStoppableInteral( () => {
+        setStoppableInterval( () => {
             // check Collisions
             this.checkCollisions()
             this.checkThrowObejects()
@@ -103,9 +103,9 @@ class World {
         this.throwableObjects.forEach(throwableObject => {
 
             if(this.endBoss.isColliding(throwableObject) && !throwableObject.isBroken && (throwableObject.heigth !=0 && throwableObject.width !=0 && throwableObject.y > 90)) {
-                this.endBoss.endbossEnergy -= 40
+                this.endBoss.energy -= 40
                 this.bottle_break_sound.play()
-
+                console.log("endboss energy", this.endBoss.energy)
                 throwableObject.isBroken = true
                 throwableObject.splash()
                 //throwableObject.groundPosition =  throwableObject.y
@@ -127,15 +127,19 @@ class World {
 
 
     checkGameEnd() {
-        if(this.endBoss.endbossEnergy < 0){
-            this.gameEnd.wonGame()
-            this.win_sound.play()
-            this.restartGame()
+        if(this.endBoss.energy < 0){
+            setTimeout( () => {
+                this.gameEnd.wonGame()
+                this.win_sound.play()
+                this.restartGame()
+            },4000)
         }
 
         if(this.character.energy <= 0) {
-            this.gameEnd.lostGame()
-            this.lose_sound.play()
+            setTimeout(() => {
+                this.gameEnd.lostGame()
+                this.lose_sound.play()
+            },4000)
         }
     }
 

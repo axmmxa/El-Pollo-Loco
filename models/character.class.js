@@ -67,7 +67,7 @@ class Character extends MovableObject {
 
     animate() {
 
-        setStoppableInteral(() => {
+        setStoppableInterval(() => {
             this.walking_sound.pause()
             if(this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.moveRight()
@@ -87,7 +87,7 @@ class Character extends MovableObject {
             this.world.camera_x = -this.x + 100    
         }, 1000/60)
 
-        setStoppableInteral( () => {
+        setStoppableInterval( () => {
 
             if(this.isDead()) {
                 console.log("isDead")

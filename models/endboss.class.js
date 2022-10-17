@@ -2,7 +2,8 @@ class Endboss extends MovableObject {
    
     height = 400
     width = 250
-    endbossEnergy = 100
+    moveX
+    
 
     IMAGES_NORMAL= [
         'img/4_enemie_boss_chicken/2_alert/G6.png',
@@ -50,37 +51,35 @@ class Endboss extends MovableObject {
     }
 
     animate() {
+        
+        setStoppableInterval( () => {
+            if(this.energy >= 100) {
+                this.playAnimation(this.IMAGES_NORMAL)
+                console.log("endboss animation normal")
+            }
 
-            setStoppableInteral( () => {
-                if(this.endbossEnergy == 100) {
-                    this.playAnimation(this.IMAGES_NORMAL)
-                }
-
-                if(this.endbossEnergy < 100) {
-                    this.playAnimation(this.IMAGES_HURT)
-                }
+            else if(this.energy < 100 && this.energy >= 60) {
+                this.playAnimation(this.IMAGES_HURT)
+                console.log("endboss animation hurt")
+            }
 
 
-                if(this.endbossEnergy < 60) {
-                    
-                    setStoppableInteral( () => {
-            
-                        this.playAnimation(this.IMAGES_WALKING)
-                    }, 100)
-
-                    setStoppableInteral( () => {
-                        let i = 0.05
-                        console.log(i)
-                        this.x -= (this.speed - i)
-                        i = i + 0.025
-                    }, 1000 / 60)
-                }
-
-                if(this.endbossEnergy < 0) {
-                    this.playAnimation(this.IMAGES_DEAD)
-                }
+            if(this.energy < 60 && this.energy >= 0) {
+                this.playAnimation(this.IMAGES_WALKING)
                 
-         }, 200)
+                this.moveX =setInterval( () => {
+                    this.x -= 0.1
+                    console.log("endboss walking animation")
+                }, 1000/60)
+            }
+
+            if(this.energy <= 0) {
+                    this.playAnimation(this.IMAGES_DEAD)
+                    clearInterval(this.moveX)
+                    console.log("endboss is dead")
+            }
+        }, 200)
+        
     }
 
 }

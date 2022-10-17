@@ -2,7 +2,7 @@
 let intervalIDS = []
 
 
-function setStoppableInteral(fn, time) {
+function setStoppableInterval(fn, time) {
    let id =  setInterval(fn, time)
    intervalIDS.push(id)
 }
