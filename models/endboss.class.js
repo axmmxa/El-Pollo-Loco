@@ -54,7 +54,7 @@ class Endboss extends MovableObject {
         
         setStoppableInterval( () => {
 
-            if(this.energy <= 0) {
+            if(this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD)
                 clearInterval(this.moveX)
                 console.log("endboss is dead")
@@ -65,13 +65,8 @@ class Endboss extends MovableObject {
                 console.log("endboss animation hurt")
             }
 
-            else if(this.energy < 20 && this.energy >= 0) {
+            else if(this.energy <= 20 && this.energy >= 0) {
                 this.playAnimation(this.IMAGES_WALKING)
-                
-                this.moveX =setInterval( () => {
-                    this.x -= 0.1
-                    console.log("endboss walking animation")
-                }, 1000/60)
             }
 
             else if(this.energy >= 25) {
@@ -80,6 +75,12 @@ class Endboss extends MovableObject {
             }
  
         }, 200)
+
+       setStoppableInterval( () => {
+        if(!this.isDead() && this.energy <= 20 && this.energy >= 0) {
+            this.x -= 1.2
+        }
+       }, 1000/60) 
         
     }
 
