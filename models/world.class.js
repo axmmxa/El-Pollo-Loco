@@ -95,15 +95,12 @@ class World {
             }
         })
 
-        //Collision Bottle with ground
-
-       
-
         // Collision Bottle with endboss
         this.throwableObjects.forEach(throwableObject => {
 
             if(this.endBoss.isColliding(throwableObject) && !throwableObject.isBroken && (throwableObject.heigth !=0 && throwableObject.width !=0 && throwableObject.y > 90)) {
-                this.endBoss.energy -= 40
+                this.endBoss.hit()
+                //this.endBoss.energy -= 40
                 this.bottle_break_sound.play()
                 console.log("endboss energy", this.endBoss.energy)
                 throwableObject.isBroken = true

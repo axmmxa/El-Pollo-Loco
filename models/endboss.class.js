@@ -3,7 +3,7 @@ class Endboss extends MovableObject {
     height = 400
     width = 250
     moveX
-    
+    energy = 25
 
     IMAGES_NORMAL= [
         'img/4_enemie_boss_chicken/2_alert/G6.png',
@@ -53,18 +53,19 @@ class Endboss extends MovableObject {
     animate() {
         
         setStoppableInterval( () => {
-            if(this.energy >= 100) {
-                this.playAnimation(this.IMAGES_NORMAL)
-                console.log("endboss animation normal")
+
+            if(this.energy <= 0) {
+                this.playAnimation(this.IMAGES_DEAD)
+                clearInterval(this.moveX)
+                console.log("endboss is dead")
             }
 
-            else if(this.energy < 100 && this.energy >= 60) {
+            else if(this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT)
                 console.log("endboss animation hurt")
             }
 
-
-            if(this.energy < 60 && this.energy >= 0) {
+            else if(this.energy < 20 && this.energy >= 0) {
                 this.playAnimation(this.IMAGES_WALKING)
                 
                 this.moveX =setInterval( () => {
@@ -73,11 +74,11 @@ class Endboss extends MovableObject {
                 }, 1000/60)
             }
 
-            if(this.energy <= 0) {
-                    this.playAnimation(this.IMAGES_DEAD)
-                    clearInterval(this.moveX)
-                    console.log("endboss is dead")
+            else if(this.energy >= 25) {
+                this.playAnimation(this.IMAGES_NORMAL)
+                console.log("endboss animation normal")
             }
+ 
         }, 200)
         
     }
