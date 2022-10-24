@@ -124,19 +124,19 @@ class World {
 
 
     checkGameEnd() {
-        if(this.endBoss.energy < 0){
+        if(this.endBoss.energy == 0){
             setTimeout( () => {
                 this.gameEnd.wonGame()
                 this.win_sound.play()
                 this.restartGame()
-            },4000)
+            },1000)
         }
 
         if(this.character.energy <= 0) {
             setTimeout(() => {
                 this.gameEnd.lostGame()
                 this.lose_sound.play()
-            },4000)
+            },1000)
         }
     }
 
