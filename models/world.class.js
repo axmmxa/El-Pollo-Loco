@@ -128,7 +128,6 @@ class World {
             setTimeout( () => {
                 this.gameEnd.wonGame()
                 this.win_sound.play()
-                this.restartGame()
             },1000)
         }
 
