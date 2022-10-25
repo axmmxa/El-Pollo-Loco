@@ -6,6 +6,7 @@ let keyboard = new Keyboard()
 
 
 function startGame() {
+    initLevel1()
     document.getElementById('body').innerHTML = ''
     document.getElementById('body').innerHTML += `
 
