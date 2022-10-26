@@ -13,6 +13,9 @@ function initLevel1 () {
             new Endboss()
         ],
         [
+            new Cloud(),
+            new Cloud(),
+            new Cloud(),
             new Cloud()
         ],
         [
